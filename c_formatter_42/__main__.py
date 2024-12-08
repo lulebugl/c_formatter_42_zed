@@ -51,9 +51,7 @@ def main() -> int:
                 result = input(f"Are you sure you want to overwrite {filepath}?[y/N]")
                 if result != "y":
                     continue
-            print(f"Writing to {filepath}")
-            with open(filepath, "w") as file:
-                file.write(run_all(content))
+            print(run_all(content))
         except OSError as e:
             print(f"Error: {e.filename}: {e.strerror}", file=sys.stderr)
             return 1
