@@ -31,8 +31,8 @@ pip3 install --user c-formatter-42  # If you don't have root privileges
 ### From source
 
 ```sh
-git clone https://github.com/cacharle/c_formatter_42
-cd c_formatter_42
+git clone https://github.com/lulebugl/c_formatter_42_zed
+cd c_formatter_42_zed
 pip3 install -e .
 ```
 
@@ -56,30 +56,6 @@ optional arguments:
   -h, --help     show this help message and exit
   -c, --confirm  Ask confirmation before overwriting any file
 ```
-
-## Plugins / Extensions
-
-### Vim
-
-Check out the [`c_formatter_42.vim`](https://github.com/cacharle/c_formatter_42.vim) plugin. This plugin automatically installs the `c_formatter_42` package using pip.
-
-### Visual Studio Code
-
-1. Install `c_formatter_42`
-1. Install the [`keyhr.42-c-format`](https://marketplace.visualstudio.com/items?itemName=keyhr.42-c-format) extension
-1. Set `keyhr.42-c-format` as the default formatter for C files in `.vscode/settings.json`
-
-```json
-{
-  "[c]": {
-    "editor.defaultFormatter": "keyhr.42-c-format"
-  }
-}
-```
-
-## Contributing
-
-Feel free to report issues or contribute. :)
 
 ### Run the tests
 
