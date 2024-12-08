@@ -36,6 +36,11 @@ def main() -> int:
         nargs="*",
         help="File to format inplace, if no file is provided read STDIN",
     )
+    arg_parser.add_argument(
+        "--stdout",
+        action="store_true",
+        help="Output to stdout instead of modifying files"
+    )
     args = arg_parser.parse_args()
 
     if len(args.filepaths) == 0:
@@ -43,6 +48,10 @@ def main() -> int:
         print(run_all(content), end="")
         return 0
 
+    if args.stdout:
+        content = sys.stdin.read() if len(args.filepaths) == 0 else open(args.filepaths[0]).read()
+        print(run_all(content), end="")
+        return 0
     for filepath in args.filepaths:
         try:
             with open(filepath, "r") as file:
@@ -52,6 +61,8 @@ def main() -> int:
                 if result != "y":
                     continue
             print(run_all(content))
+            with open(filepath, "w") as file:
+                file.write(run_all(content))
         except OSError as e:
             print(f"Error: {e.filename}: {e.strerror}", file=sys.stderr)
             return 1
